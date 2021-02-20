@@ -1,14 +1,15 @@
 <template>
     <div id="app">
       <Header></Header>
+      <router-view :scores="scores" :pushScore="pushScore" :resetStorage="resetStorage"></router-view>
     </div>
 </template>
 
 
 <script>
 import Header from './components/Header.vue';
-// import Game from './components/Game.vue';
-// import Score from './components/Score';
+import Game from './components/Game.vue';
+import Score from './components/Score';
 
 export default {
   name: 'app',
@@ -20,23 +21,23 @@ export default {
   created() {
     this.setScore();
   },
-  // methods: {
-  //   pushScore(msg) {
-  //     this.scores.push(msg);
-  //     localStorage.setItem('scores', JSON.stringify(this.scores));
-  //   },
-  //   setScore() {
-  //     this.scores = JSON.parse('localStorage', getItem('scores')) || [];
-  //   },
-  //   resetStorage() {
-  //     localStorage.removeItem('scores');
-  //     this.scores = [];
-  //   }
-  // },
+  methods: {
+    pushScore(msg) {
+      this.scores.push(msg);
+      localStorage.setItem('scores', JSON.stringify(this.scores));
+    },
+    setScore() {
+      this.scores = JSON.parse('localStorage', getItem('scores')) || [];
+    },
+    resetStorage() {
+      localStorage.removeItem('scores');
+      this.scores = [];
+    }
+  },
   components: {
     Header,
-    // Game,
-    // Score
+    Game,
+    Score
   }
 }
 </script>

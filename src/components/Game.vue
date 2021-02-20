@@ -2,7 +2,7 @@
     <div>
         <div v-if="resultMessage">
             <h2>{{ resultMessage }}</h2>
-            <button class="subBtn">もう一度！</button>
+            <button class="subBtn" v-on:click="start">もう一度！</button>
         </div>
         <div class="imgArea">
             <img v-bind:src="srcList[srcNum]">
